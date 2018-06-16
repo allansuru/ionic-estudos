@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hello World by SuRu
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+ <button ion-button (click)="click()">Click me 2</button>
+<ion-content padding>  
+ <ion-list>
+  <button ion-item *ngFor="let item of itens" (click)="detailsItem(item)">
+    {{ item.nome }}
+  </button>  
+</ion-list>
+</ion-content>
