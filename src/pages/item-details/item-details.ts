@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 
 
 @Component({
@@ -8,8 +8,19 @@ import { NavParams } from 'ionic-angular';
 export class ItemDetailsPage {
 item;
 
-    constructor(navParams: NavParams) {
+    constructor(
+        navParams: NavParams,
+        private viewCtrl: ViewController
+    ) {
 
       this.item = navParams.get('item');
+    }
+
+    cancel() {
+        this.viewCtrl.dismiss();
+    }
+
+    done() {
+        this.viewCtrl.dismiss();
     }
 }

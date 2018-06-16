@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hello World by SuRu  <ion-icon ios="logo-angular" md="logo-angular"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+      <button ion-button (click)="click()" color='primary' round>Click me </button>
+  </div>
+ <ion-list>
+  <button ion-item *ngFor="let item of itens" (click)="detailsItem(item)">
+    {{ item.nome }}
+  </button>  
+</ion-list>
+</ion-content>

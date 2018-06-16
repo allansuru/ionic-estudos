@@ -1,0 +1,6 @@
+
+ npm install --global --production windows-build-tools  -- instalar o pyton
+
+ionic cordova platform add android -- add android
+
+ionic cordova run android -lc or ionic serve
