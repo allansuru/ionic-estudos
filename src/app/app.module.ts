@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HomePage2 } from './../pages/home2/home';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
+import { AppVersion } from '@ionic-native/app-version';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
   providers: [
     StatusBar,
     SplashScreen,
+    AppVersion,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

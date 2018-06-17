@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, Platform } from 'ionic-angular';
 import { ItemDetailsPage } from '../item-details/item-details'
+import { AppVersion } from '@ionic-native/app-version';
+import { APP_ID_RANDOM_PROVIDER } from '@angular/core/src/application_tokens';
 
 @Component({
   selector: 'page-home-2',
@@ -9,9 +11,12 @@ import { ItemDetailsPage } from '../item-details/item-details'
 export class HomePage2 {
 
   itens: Object;
+  version: '';
 
   constructor(
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public platform: Platform,
+    private appVersion: AppVersion
   ) {
     this.itens = [
       {
@@ -30,6 +35,14 @@ export class HomePage2 {
         descricao: 'Bem fodinha'
       }
     ];
+
+    platform.ready().then(() => {
+    appVersion.getVersionNumber().then((v) => {
+      console.log('Version: ', v);
+      this.version = v;
+    })
+      
+    });
   }
 
   click() {

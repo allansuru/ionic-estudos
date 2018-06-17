@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <div text-center>
-      <button ion-button (click)="click()" color='primary' round>Click me </button>
+      <!-- <button ion-button (click)="click()" color='primary' round>Click me - {{ version }} </button> -->
   </div>
  <ion-list>
   <button ion-item *ngFor="let item of itens" (click)="detailsItem(item)">
@@ -16,3 +16,11 @@
   </button>  
 </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p>Version {{ version}}</p>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
