@@ -3,6 +3,7 @@ import { ModalController, Platform } from 'ionic-angular';
 import { ItemDetailsPage } from '../item-details/item-details'
 import { AppVersion } from '@ionic-native/app-version';
 import { APP_ID_RANDOM_PROVIDER } from '@angular/core/src/application_tokens';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
 @Component({
   selector: 'page-home-2',
@@ -11,12 +12,14 @@ import { APP_ID_RANDOM_PROVIDER } from '@angular/core/src/application_tokens';
 export class HomePage2 {
 
   itens: Object;
-  version: '';
+  version = '';
+  contatos: any;
 
   constructor(
     public modalCtrl: ModalController,
     public platform: Platform,
-    private appVersion: AppVersion
+    private appVersion: AppVersion,
+    private contacts: Contacts
   ) {
     this.itens = [
       {
@@ -43,11 +46,23 @@ export class HomePage2 {
     })
       
     });
+
   }
 
-  click() {
-    console.log('Button was clicked 2.');
-    
+  addContato() {
+    let contact: Contact = this.contacts.create();
+    contact.name = new ContactName(null, 'Smith', 'John');
+    contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
+    contact.save().then(
+      () => console.log('Contact saved!', contact),
+      (error: any) => console.error('Error saving contact.', error)
+    );
+
+  }
+
+  buscaContatos() {
+    this.contacts.find(['displayName'])
+    .then(c => this.contatos = c);
   }
 
   detailsItem(item) {

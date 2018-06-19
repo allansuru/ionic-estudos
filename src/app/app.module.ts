@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { HomePage2 } from './../pages/home2/home';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AppVersion } from '@ionic-native/app-version';
+import { Contacts } from '@ionic-native/contacts';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AppVersion } from '@ionic-native/app-version';
     StatusBar,
     SplashScreen,
     AppVersion,
+    Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

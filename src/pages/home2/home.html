@@ -8,11 +8,19 @@
 
 <ion-content padding>
   <div text-center>
-      <!-- <button ion-button (click)="click()" color='primary' round>Click me - {{ version }} </button> -->
+      <button ion-button (click)="addContato()" color='primary' round>Criar Contato</button>
   </div>
+  <div text-center>
+    <button ion-button (click)="buscaContatos()" color='primary' round>Busca Contatos</button>
+</div>
  <ion-list>
   <button ion-item *ngFor="let item of itens" (click)="detailsItem(item)">
     {{ item.nome }}
+  </button>  
+</ion-list>
+<ion-list>
+  <button ion-item *ngFor="let c of contatos">
+    {{ c.name.formatted }}
   </button>  
 </ion-list>
 </ion-content>

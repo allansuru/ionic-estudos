@@ -3,8 +3,11 @@
 
 ionic cordova platform add android -- add android
 
-c or ionic serve
+ionic cordova run android -lc or ionic serve
 
 -- add plugins exemple
 
 ionic cordova plugin add cordova-plugin-app-version --save
+ionic cordova plugin add cordova-plugin-contacts --variable CONTACTS_USAGE_DESCRIPTION="Because we need contacts"  --save
+
+ionic build android

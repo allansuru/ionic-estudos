@@ -3,7 +3,7 @@
     <name>helloWorld</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.253.1:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -84,5 +84,8 @@
     <allow-navigation href="http://192.168.220.1:8100" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <allow-navigation href="http://192.168.253.1:8100" />
+    <plugin name="cordova-plugin-contacts" spec="^3.0.1">
+        <variable name="CONTACTS_USAGE_DESCRIPTION" value="Because we need contacts" />
+    </plugin>
     <engine name="android" spec="7.0.0" />
 </widget>
