@@ -10,6 +10,7 @@ import { HomePage2 } from './../pages/home2/home';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AppVersion } from '@ionic-native/app-version';
 import { Contacts } from '@ionic-native/contacts';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { Contacts } from '@ionic-native/contacts';
     SplashScreen,
     AppVersion,
     Contacts,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
