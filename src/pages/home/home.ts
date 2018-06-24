@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ItemDetailsPage } from '../item-details/item-details'
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -9,8 +11,14 @@ import { ItemDetailsPage } from '../item-details/item-details'
 export class HomePage {
 
   itens: Object;
+  localizacao = {
+    latitude: 0,
+    longetude: 0
+  }
 
-  constructor(public navCtrl: NavController) {
+
+  constructor(public navCtrl: NavController,     
+    private geolocation: Geolocation) {
     this.itens = [
       {
         nome: 'Vitor',
@@ -35,6 +43,23 @@ export class HomePage {
   detailsItem(item) {
     // mandando para o componente que eu quero e o item
       this.navCtrl.push(ItemDetailsPage, { item: item });
+  }
+
+  getLocation() {
+    console.log('click');
+    
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+      console.log('latitude: ', resp.coords.latitude);
+      
+      this.localizacao.latitude = resp.coords.latitude;
+      this.localizacao.longetude = resp.coords.longitude;
+
+     }).catch((error) => {
+       this.presentToast('Error getting location: ' + error.message);
+       
+     });
   }
 
 }

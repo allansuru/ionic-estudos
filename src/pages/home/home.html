@@ -14,4 +14,11 @@
     {{ item.nome }}
   </button>  
 </ion-list>
+<ion-card-content>
+  Latitude: {{ localizacao.latitude }} | Longetude: {{ localizacao.longetude }}
+ </ion-card-content>
+ <div text-center>
+   <button ion-button (click)="getLocation()" color='primary' round>Minha Localização</button>
+ </div>
+
 </ion-content>

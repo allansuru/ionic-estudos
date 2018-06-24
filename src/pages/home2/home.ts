@@ -6,9 +6,12 @@ import { APP_ID_RANDOM_PROVIDER } from '@angular/core/src/application_tokens';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 
 const PHOTOLIBRARY = 0;
+
 
 @Component({
   selector: 'page-home-2',
@@ -25,6 +28,13 @@ export class HomePage2 {
     telefone: ''
   };
 
+  localizacao = {
+    latitude: 0,
+    longetude: 0
+  }
+
+  
+
 
   constructor(
     public modalCtrl: ModalController,
@@ -32,7 +42,8 @@ export class HomePage2 {
     private appVersion: AppVersion,
     private contacts: Contacts,
     public toastCtrl: ToastController,
-    private camera: Camera
+    private camera: Camera,
+    private geolocation: Geolocation
   ) {
     this.itens = [
       {
@@ -70,13 +81,6 @@ export class HomePage2 {
     contact.name = new ContactName(null, this.contato.nome);
     contact.phoneNumbers = [new ContactField('mobile', this.contato.telefone)]; 
 
-    
-    // contact.save().then(
-    //   () => 
-    //     console.log('Contact saved!', contact),
-    //   (error: any) => console.error('Error saving contact.', error)
-    // );
-
     contact.save().then(() => {
         this.presentToast('Usuário adicionado com sucesso!');
     }, (error: Error) => {
@@ -93,6 +97,23 @@ export class HomePage2 {
 
   detailsItem(item) {
    this.modalCtrl.create(ItemDetailsPage, { item:item }).present();
+  } 
+
+  getLocation() {
+    console.log('click');
+    
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+      console.log('latitude: ', resp.coords.latitude);
+      
+      this.localizacao.latitude = resp.coords.latitude;
+      this.localizacao.longetude = resp.coords.longitude;
+
+     }).catch((error) => {
+       this.presentToast('Error getting location: ' + error.message);
+       
+     });
   }
 
   presentToast(msg: string) {
