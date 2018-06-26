@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ItemDetailsPage } from '../item-details/item-details'
+import { ToastController } from 'ionic-angular';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -18,7 +19,8 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController,     
-    private geolocation: Geolocation) {
+    private geolocation: Geolocation,
+    public toastCtrl: ToastController,) {
     this.itens = [
       {
         nome: 'Vitor',
@@ -60,6 +62,14 @@ export class HomePage {
        this.presentToast('Error getting location: ' + error.message);
        
      });
+  }
+
+  presentToast(msg: string) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 
 }
